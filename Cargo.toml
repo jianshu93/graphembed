@@ -16,7 +16,7 @@ edition = "2021"
 path = "src/lib.rs"
 
 [[bin]]
-name = "embed"
+name = "graphembed"
 path = "src/bin/embed.rs"
 
 
