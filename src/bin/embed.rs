@@ -255,7 +255,7 @@ pub fn main() {
     //
     println!("initializing default logger from environment ...");
     let _ = env_logger::Builder::from_default_env().init();
-    log::info!("logger initialized from default environment"); 
+    println!("\n ************** initializing logger *****************\n"); 
     //
     // first we define subcommands we will need, hope , sketching , validation
     // the hope command
