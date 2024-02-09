@@ -78,9 +78,6 @@ use sprs::{TriMatI};
 use graphembed::io;
 
 
-/// variable to be used to run tests
-const _DATADIR : &str = &"/home/jpboth/Data/Graphs";
-
 #[doc(hidden)]
 fn parse_sketching(matches : &ArgMatches) -> Result<NodeSketchParams, anyhow::Error> {
     log::debug!("in parse_sketching");
@@ -374,7 +371,9 @@ pub fn main() {
     // Now the command line
     // ===================
     //
-    let matches = Command::new("embed")
+    let matches = Command::new("graphembed")
+        .version("0.1.0")
+        .about("Efficient Graph Embedding via Recursive Sketching or High-order Transitivity Preserving")
         .arg_required_else_help(true)
         .arg(Arg::new("csvfile")
             .long("csv")  
