@@ -15,7 +15,7 @@ edition = "2021"
 path = "src/lib.rs"
 
 [[bin]]
-name = "embed"
+name = "graphembed"
 path = "src/bin/embed.rs"
 
 
@@ -98,7 +98,7 @@ katexit = { version = "0.1" }
 # can be change to 
 #
 #default = ["annembed/intel-mkl-static", "ndarray-linalg/intel-mkl-static"]
-default = ["openblas-system"]
+default = []
 
 intel-mkl-static = [
     "ndarray/blas",
