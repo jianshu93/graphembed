@@ -15,7 +15,7 @@ edition = "2021"
 path = "src/lib.rs"
 
 [[bin]]
-name = "embed"
+name = "graphembed"
 path = "src/bin/embed.rs"
 
 
@@ -97,7 +97,7 @@ katexit = { version = "0.1" }
 #
 #default = ["annembed/intel-mkl-static", "ndarray-linalg/intel-mkl-static"]
 
-default = ["openblas-system", "simdeez_f"]
+default = []
 
 # simd choice. stdsimd requires nightly compiler
 stdsimd = ["hnsw_rs/stdsimd"]
