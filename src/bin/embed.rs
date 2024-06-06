@@ -303,7 +303,7 @@ pub fn main() {
     // TODO: to put in clap ? just for now select at compile time
     let do_vcmpr = true;
     //
-    println!("initializing default logger from environment ...");
+    println!("initializing default logger from environment ...\n");
     let _ = env_logger::Builder::from_default_env().init();
     log::info!("logger initialized from default environment");
     //
@@ -311,6 +311,7 @@ pub fn main() {
     // the hope command
     //
     let hope_cmd = Command::new("hope")
+        .about("Asymmetric Transitivity Preserving Graph Embedding")
         .subcommand_required(false)
         .arg_required_else_help(true)
         .subcommand(
@@ -365,6 +366,7 @@ pub fn main() {
         );
     // the sketch embedding command
     let sketch_cmd = Command::new("sketching")
+        .about("NodeSketch: Highly-Efficient Graph Embeddings via Recursive Sketching")
         .arg(
             Arg::new("symetric")
                 .required(false)
@@ -400,6 +402,7 @@ pub fn main() {
 
     // validation must have one embedding subcommand
     let validation_cmd = Command::new("validation")
+        .about("Graph Embedding with Accuracy Benchmark")
         .subcommand_required(true)
         .arg(
             Arg::new("nbpass")
@@ -421,13 +424,14 @@ pub fn main() {
             Arg::new("centric")          // do we process amino acid file, default is dna, pass --aa
                .long("centric")
                .action(clap::ArgAction::SetTrue)
-                .help("--centric To ask for a centric validation pass after standard one, require no value")
+                .help("ask for a centric validation (centric AUC) pass after standard AUC, require no value")
             )
         .subcommand(hope_cmd.clone())
         .subcommand(sketch_cmd.clone());
 
     // the embedding command does just the embedding
     let embedding_command = Command::new("embedding")
+        .about("Graph Embedding")
         .arg(
             Arg::new("output")
                 .long("output")
