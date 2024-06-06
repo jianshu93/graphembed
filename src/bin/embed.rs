@@ -444,6 +444,8 @@ pub fn main() {
     // ===================
     //
     let matches = Command::new("embed")
+        .version("0.1.2")
+        .about("Efficient and Robust Graph Embedding via High-Order Proximity Preservation or Recursive Sketching")
         .arg_required_else_help(true)
         .arg(
             Arg::new("csvfile")
