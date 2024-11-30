@@ -10,7 +10,7 @@ pub use crate::embedding::*;
 
 pub use crate::validation::link;
 pub use crate::validation::linkparams::*;
-pub use annembed::tools::svdapprox::*;
+pub use annembed_gsearch::tools::svdapprox::*;
 //pub use crate::validation::anndensity::*;
 
 pub use crate::structure::density::pava::{IsotonicRegression, PointIterator};

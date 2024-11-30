@@ -512,7 +512,7 @@ where
     /// Find the _y_ point at position `at_x`
     pub fn interpolate<'b: 'a>(&'b self, at_x: T) -> T
     where
-        T: Float + ordered_float::FloatCore,
+        T: Float,
     {
         //
         log::debug!("interpolate nb blocks = {}", self.blocks.borrow().len());

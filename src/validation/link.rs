@@ -19,7 +19,7 @@
 ///
 ///  Another reference is :
 ///       - Link prediction problem for social networks
-///             David Liben-Nowell, J Kleinberg 2007
+///             David Liben-Nowell, J Kleinberg 2003
 use log::log_enabled;
 
 use cpu_time::ProcessTime;

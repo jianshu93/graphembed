@@ -60,10 +60,6 @@ In particular it is shown that :
  
   See results in [orkut.md](./orkut.md) and examples directory together with a small Rust notebook in directory [Notebooks](./Notebooks/orkutrs.ipynb)
 
-## Validation
-
-Validation of embeddings is assessed via standard Auc with random deletion of edges. See documentation in the *link* module and *embed* binary.
-We give also a variation based on centric quality assessment as explained at [cauc](http://github.com/jean-pierreBoth/linkauc)
 ## Some data sets
 
 ### Without labels
@@ -130,11 +126,10 @@ An implementation of Generalized Svd comes as a by-product in module [gsvd](./sr
 
 ### Installation
 
-The crate provides features (with a default configuration), required by the *annembed* dependency, to specify which version of lapack you want to use or the choice of simd implementation.
-- For example compilation is done by :
+The crate provides three features, required by the *annembed* dependency, to specify which version of lapack you want to use.  
+For example compilation is done by :
 *cargo build --release --features="openblas-system"* to  use a dynamic link with openblas.
-The choice of one feature is mandatory to provide required linear algebra library.  
-- On Intel the simdeez_f feature can be used. On other cpus the stdsimd feature can be chosen but it requires compiler >= 1.79
+The choice of one feature is mandatory to provide required linear algebra library.
 
 ### Usage
 
@@ -166,7 +161,7 @@ For an asymetric graph we get
        embed --csv ./Data/Graphs/asymetric.csv  validation --nbpass 5 --skip 0.15 sketching --decay 0.2  --dim 200 --nbiter 5 
 
 
-    More details can be found in docs of the embed module. Use cargo doc --no-dep --bin embed (and cargo doc --no-dep) as usual.
+    It is detailed in docs of the embed module. Use cargo doc --no-deps (cargo doc --no-dep --bin embed) and as usual.
 
 - Use the environment variable RUST_LOG gives access to some information at various level (debug, info, error)  via the **log** and **env_logger** crates.
 

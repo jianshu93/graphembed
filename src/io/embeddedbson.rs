@@ -39,6 +39,7 @@ use std::path::Path;
 // to convert NodeId to a string, so NodeId must satisfy NodeId : ToString
 // this  requires NodeId :  Display + ?Sized to get auto implementation
 use std::str::FromStr;
+use std::string::ToString;
 
 // for serilaizatio, desreialization
 use bson::{bson, Bson, DeserializerOptions, Document};

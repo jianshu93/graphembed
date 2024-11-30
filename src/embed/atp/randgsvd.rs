@@ -29,10 +29,12 @@ use num_traits::float::*;
 
 use ndarray::Array2;
 
+use ndarray_linalg::{Lapack, Scalar};
+
 pub use super::gsvd::{GSvd, GSvdOptParams, GSvdResult};
 
 // this module provides svdapproximation tools à la Hlako-Tropp
-use annembed::tools::svdapprox::*;
+use annembed_gsearch::tools::svdapprox::*;
 
 // We fist implement a Range approximation with a precision criteria as
 // this one can be done with Sparse Matrix. Moreover it help determine the rank

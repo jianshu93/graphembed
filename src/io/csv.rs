@@ -25,7 +25,7 @@ use csv::ReaderBuilder;
 use num_traits::float::*;
 
 // recall this gives also use ndarray_linalg::{Scalar, Lapack}
-use annembed::tools::svdapprox::*;
+use annembed_gsearch::tools::svdapprox::*;
 
 use indexmap::IndexSet;
 use sprs::{CsMat, TriMatI};

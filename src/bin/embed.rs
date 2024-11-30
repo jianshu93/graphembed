@@ -366,7 +366,7 @@ pub fn main() {
         );
     // the sketch embedding command
     let sketch_cmd = Command::new("sketching")
-        .about("NodeSketch: Highly-Efficient Graph Embeddings via Recursive Sketching")
+        .about("Highly-Efficient Graph Embeddings via Recursive Sketching")
         .arg(
             Arg::new("symetric")
                 .required(false)
@@ -447,7 +447,7 @@ pub fn main() {
     // Now the command line
     // ===================
     //
-    let matches = Command::new("embed")
+    let matches = Command::new("graphembed")
         .version("0.1.2")
         .about("Efficient and Robust Graph Embedding via High-Order Proximity Preservation or Recursive Sketching")
         .arg_required_else_help(true)
@@ -466,7 +466,7 @@ pub fn main() {
                 .required(true)
                 .value_parser(clap::value_parser!(bool))
                 .default_value("true")
-                .help(" -s "),
+                .help("the graph is symetry or not"),
         )
         .subcommand_required(true)
         .subcommand(embedding_command)

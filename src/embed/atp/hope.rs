@@ -25,7 +25,7 @@ use sprs::{CsMat, TriMatBase, TriMatI};
 
 use crate::embed::tools::{degrees::*, renormalize};
 
-use annembed::tools::svdapprox::{MatMode, MatRepr, RangeApproxMode, SvdApprox, SvdResult};
+use annembed_gsearch::tools::svdapprox::{MatMode, MatRepr, RangeApproxMode, SvdApprox, SvdResult};
 
 use super::orderingf::*;
 use super::randgsvd::{GSvdApprox, GSvdResult};
@@ -745,6 +745,8 @@ mod tests {
     //    RUST_LOG=graphembed::hope=DEBUG cargo test test_name -- --nocapture
 
     use super::*;
+
+    use crate::io::csv::csv_to_trimat;
 
     #[allow(unused)]
     use annembed::tools::svdapprox::{RangePrecision, RangeRank};
