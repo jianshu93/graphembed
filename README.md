@@ -15,6 +15,71 @@ This crate provides ,as a library and an executable,embedding of directed or und
     The algorithm is based on an extension of the hashing strategy used in the module **nodesketch**.  
     In the undirected case, this module also computes a global embedding vector for the whole graph. **It is still in an early version**.
 
+## Quick Install and usage
+
+### via Bioconda for MacOS/Linux
+```bash
+conda install -c conda-forge -c bioconda graphembed
+```
+
+### Rust (nightly)
+```bash
+git clone https://github.com/jean-pierreBoth/graphembed.git
+cd graphembed
+cargo build --release --features intel-mkl-static,simdeez_f
+./target/release/graphembed -h
+```
+
+```bash
+wget https://gitlab.com/-/project/64961144/uploads/4e341383d62d86d1dd66e668e91b2c07/BlogCatalog.txt
+
+#### sketching via nodesketch algorithm
+./target/release/graphembed --csv ./BlogCatalog.txt --symetric true embedding -o embed_output sketching --dim 128 --decay 0.3 --nbiter 5
+
+#### sketching via HOPE algorithm, only for small datasets (e.g., less than 10,000 nodes)
+./target/release/graphembed --csv ./BlogCatalog.txt --symetric true embedding -o embed_output hope rank --targetrank 128 --nbiter 5
+
+### accuracy evaluation and benchmark via the validation subcommand
+#### sketching
+RUST_LOG=info ./target/release/graphembed --csv ./BlogCatalog.txt --symetric true validation --nbpass 1  --skip 0.2 --centric sketching --dim 128 --decay 0.3 --nbiter 5
+#### HOPE
+RUST_LOG=info ./target/release/graphembed --csv ./BlogCatalog.txt --symetric true validation --nbpass 1  --skip 0.2 --centric hope rank --targetrank 128 --nbiter 5
+
+```
+
+### Python
+
+```bash
+pip install graphembed_rs
+```
+
+```python
+import os
+os.environ["RUST_LOG"] = "info"
+import graphembed_rs.graphembed_rs as ge
+import graphembed_rs.load_utils as ge_utils
+help(ge)
+help(ge_utils)
+### HOPE
+ge.embed_hope_rank("BlogCatalog.txt", target_rank=128, nbiter=4,output="embedding_output")
+out_vectors=ge_utils.load_embedding_bson("embedding_output.bson")
+print("OUT embedding shape :", out_vectors.shape)
+print("first OUT vector    :", out_vectors[0])
+
+### Sketching
+### sketching only
+ge.embed_sketching("BlogCatalog.txt", decay=0.3, dim=128, nbiter=5, symetric=True, output="embedding_output")
+out_vectors=ge_utils.load_embedding_bson("embedding_output.bson")
+print("OUT embedding shape :", out_vectors.shape)
+print("first OUT vector    :", out_vectors[0])
+
+
+### validate accuracy
+auc_scores = ge.validate_sketching("BlogCatalog.txt",decay=0.3, dim=128, nbiter=3, nbpass=1, skip_frac=0.2,symetric=True, centric=True)
+print("Standard AUC per pass:", auc_scores)
+```
+
+
 ## Methods
 
 ### The embedding algorithms used in this crate are based on the following papers
